@@ -15,7 +15,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BodhiCubs","url":"https://bodhicubs.com/","applicationCategory":"EducationalApplication","operatingSystem":"Any","isAccessibleForFree":true,"inLanguage":"en","description":"Free, ad-free science games, Brain Gym and mindful Calm Minute breathing for kids aged 6–12, inspired by the Bodhi tree where Gautama Buddha found wisdom.","audience":{"@type":"EducationalAudience","educationalRole":"student","audienceType":"Children aged 6–12"},"educationalLevel":"CBSE / NCERT Class 1–6","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"keywords":"science games for kids, brain games, mindfulness for kids, Bodhi tree, kindness"}</script>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#684bff"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
-:root{--ink:#173b60;--accent:#31ad62;--accent2:#9ee85c;--bg:#efffe9;--lessonA:#dff5d0;--lessonB:#fff0c4}
+:root{--ink:#173b60;--accent:#0f7a3d;--accent2:#9ee85c;--bg:#efffe9;--lessonA:#dff5d0;--lessonB:#fff0c4}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;font-family:"Trebuchet MS","Comic Sans MS",Arial,sans-serif;color:var(--ink);background:#12314f}
 button{font:inherit;cursor:pointer}
@@ -32,7 +32,7 @@ button{font:inherit;cursor:pointer}
 .listen{background:#eaf6ff;color:#126da9}
 .topTitle{flex:1;min-width:120px;color:#fff;font-size:clamp(17px,2.2vw,26px);font-weight:900;text-shadow:0 2px 6px #0007}
 .timer{min-width:84px;text-align:center;color:#218d53}.timer.danger{background:#fff0f0;color:#d74c4c;animation:pulse .6s infinite alternate}
-.xp{background:#fff2c9;color:#9a6800}
+.xp{background:#fff2c9;color:#7a5100}
 @keyframes pulse{to{transform:scale(1.07)}}
 .main{position:relative;z-index:10;flex:1;min-height:0;display:grid;grid-template-columns:45fr 55fr;padding:0 2.4% 2.4%}
 .visual{position:relative;border:5px solid #fffffff0;border-right:0;border-radius:32px 0 0 32px;overflow:hidden;background:var(--lessonA);box-shadow:0 20px 50px #0004;min-height:0}
@@ -70,6 +70,7 @@ button{font:inherit;cursor:pointer}
 .bottom{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .exit,.next,.big{border:0;border-radius:15px;padding:12px 18px;font-weight:900}
 .exit{background:#ffffffc8;color:#345069}
+.bigOutline{background:#fff;color:var(--accent);border:3px solid var(--accent);font-size:17px;margin:5px;border-radius:15px;padding:9px 15px;font-weight:900}
 .next{display:none;background:var(--accent);color:#fff;font-size:17px;animation:pop .35s}.next.show{display:block}
 .overlay{position:absolute;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:#173b60b8;padding:14px;overflow:auto}
 .finish{width:min(560px,94vw);background:#fff;border-radius:30px;padding:26px;text-align:center;box-shadow:0 30px 90px #0006;animation:pop .4s}
@@ -91,14 +92,15 @@ button{font:inherit;cursor:pointer}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 /* ===== BodhiCubs v5 : games-first layout ===== */
 .needvoice{display:none!important}body.vp .needvoice{display:inline-block!important}body.vp .tools.needvoice{display:flex!important}
-#hint{z-index:90;top:12%}
+#hint{position:fixed;left:50%;top:12%;z-index:90;max-width:92vw;background:#17345a;color:#fff;font-weight:800;font-size:15px;padding:12px 22px;border-radius:16px;box-shadow:0 10px 26px #0005;text-align:center;opacity:0;pointer-events:none;transform:translate(-50%,-10px);transition:opacity .25s,transform .25s}
+#hint.show{opacity:1;transform:translate(-50%,0)}
 .k-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .k-barR{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
 .k-pill{background:#fff;color:#294d69;border:0;border-radius:99px;padding:8px 14px;font-weight:900;box-shadow:0 5px 12px #173b6030;white-space:nowrap}
 .k-btn{cursor:pointer}.k-btn:hover{transform:translateY(-2px)}
 .langBox{display:inline-flex;gap:4px;background:#ffffffd8;border-radius:99px;padding:3px;box-shadow:0 4px 10px #173b6026}
 .lc{border:0;border-radius:99px;padding:6px 12px;background:transparent;color:#294d69;font-weight:900;font-size:14px;position:relative}.lc.on{background:#684bff;color:#fff}
-.lc.soon{opacity:.55;cursor:pointer}.lc.soon .soonTag{position:absolute;top:-9px;right:-2px;background:#f2a11f;color:#fff;font-size:8px;font-weight:900;border-radius:7px;padding:1px 4px;line-height:1.3;box-shadow:0 2px 4px #0003}
+.lc.soon{color:#5c7286;cursor:pointer}.lc.soon .soonTag{position:absolute;top:-9px;right:-2px;background:#a04b00;color:#fff;font-size:8px;font-weight:900;border-radius:7px;padding:1px 4px;line-height:1.3;box-shadow:0 2px 4px #0003}
 /* HOME */
 #home{position:fixed;inset:0;overflow:auto;display:none;flex-direction:column;background:#7ed6f5}
 #bgimg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(4px) saturate(1.2) brightness(1.02);transform:scale(1.04);z-index:0}
@@ -106,7 +108,7 @@ button{font:inherit;cursor:pointer}
 #home>header,#home>main,#home>footer,.hFirst{position:relative;z-index:1}
 .hbar{padding:10px clamp(10px,2vw,26px)}
 .brand{background:#fff;border-radius:18px;padding:6px 18px;box-shadow:0 6px 16px #173b6030;line-height:1.1}
-.bn{font-size:clamp(22px,2.6vw,32px);font-weight:900;color:#684bff;display:block}.bn span{color:#ff8a32}
+.bn{font-size:clamp(22px,2.6vw,32px);font-weight:900;color:#684bff;display:block}.bn span{color:#d9660c}
 .brand small{font-weight:800;font-size:12px;color:#60758c}
 .hMain{flex:1;display:grid;grid-template-columns:1fr minmax(0,760px) 1fr;align-items:center;gap:clamp(12px,2.2vw,36px);padding:4px clamp(10px,2vw,28px)}
 .side{display:flex;flex-direction:column;gap:clamp(12px,2.4vh,22px);width:clamp(150px,15vw,220px)}
@@ -380,7 +382,7 @@ a.big.wa{display:block;text-decoration:none;text-align:center;background:#25a35a
 .pn.done{border-color:#ffc93b;box-shadow:0 10px 0 #e8a800,0 14px 26px #e8a80055}
 .pn.pnext{animation:pnPulse 1.5s ease-in-out infinite;border-color:#fff}
 @keyframes pnPulse{0%,100%{box-shadow:0 10px 0 #0002,0 0 0 0 #ffffffcc}50%{box-shadow:0 10px 0 #0002,0 0 0 16px #ffffff00}}
-.pn .pgo{position:absolute;top:-30px;left:50%;translate:-50% 0;background:#2fbf6b;color:#fff;font-weight:900;font-size:14px;padding:4px 12px;border-radius:99px;white-space:nowrap;box-shadow:0 4px 0 #1b7a3d;animation:coachIdle 1.4s ease-in-out infinite}
+.pn .pgo{position:absolute;top:-30px;left:50%;translate:-50% 0;background:#168046;color:#fff;font-weight:900;font-size:14px;padding:4px 12px;border-radius:99px;white-space:nowrap;box-shadow:0 4px 0 #1b7a3d;animation:coachIdle 1.4s ease-in-out infinite}
 .pn.trophy{background:linear-gradient(150deg,#ffe066,#fab005);filter:grayscale(.7);opacity:.8}.pn.trophy.won{filter:none;opacity:1;animation:pnPulse 1.5s infinite}
 .pBodhi{position:absolute;translate:-50% 0;z-index:3;pointer-events:none}
 .revBtn{border:0;border-radius:15px;padding:10px 16px;font-weight:900;background:linear-gradient(135deg,#ff922b,#f76707);color:#fff;box-shadow:0 6px 0 #c2410c;animation:pulseb 1.6s ease-in-out infinite;cursor:pointer}
@@ -461,7 +463,7 @@ h1.bn{margin:0;line-height:1.1}
 @media(max-width:560px){.seo p{font-size:16px}.seoGrid,.seoList{grid-template-columns:1fr}}
 </style></head>
 <body data-screen="home">
-<section id="home" aria-label="BodhiCubs home">
+<section id="home">
  <img id="bgimg" alt="" src="landing-1280.webp" srcset="landing-720.webp 720w, landing-1280.webp 1280w" sizes="100vw" fetchpriority="high">
  <div class="hShade"></div>
  <div class="hFirst">
@@ -469,7 +471,7 @@ h1.bn{margin:0;line-height:1.1}
   <div class="brand"><h1 class="bn">Bodhi<span>Cubs</span> 🌳</h1><small data-i18n="tag1"></small></div>
   <div class="k-barR"><span class="langBox"></span><span class="k-pill" id="pLv"></span><span class="k-pill" id="pStreak"></span><button class="k-pill k-btn" id="meBtn" onclick="profileModal(false)"></button></div>
  </header>
- <main class="hMain">
+ <main class="hMain" aria-label="BodhiCubs home">
   <nav class="side" id="sideL" aria-label="Classes 1 to 3"></nav>
   <section class="stageC" id="cWrap" aria-label="Fruit Catch game">
    <div id="cGame">
@@ -566,11 +568,11 @@ h1.bn{margin:0;line-height:1.1}
    <div class="bottom"><button class="exit" onclick="leaveGame()" data-i18n="exit"></button><button id="next" class="next" onclick="next()"></button></div>
   </div>
  </div>
- <div id="overlayTime" class="overlay"><div class="finish"><div style="font-size:64px">⏰</div><h2 data-i18n="timeUp"></h2><p data-i18n="timeUpP"></p><button class="big" onclick="retryQ()" data-i18n="retry"></button><button class="exit" onclick="leaveGame()" data-i18n="backMap"></button></div></div>
+ <div id="overlayTime" class="overlay"><div class="finish"><div style="font-size:64px">⏰</div><h2 data-i18n="timeUp"></h2><p data-i18n="timeUpP"></p><button class="big" onclick="retryQ()" data-i18n="retry"></button><button class="bigOutline" onclick="leaveGame()" data-i18n="backMap"></button></div></div>
  <div id="overlayEnd" class="overlay"><div class="finish" id="endCard"></div></div>
 </section>
 
-<div id="modal" class="overlay" style="position:fixed;z-index:70;display:none"><div class="finish" id="modalCard"></div></div>
+<div id="modal" class="overlay" role="dialog" aria-modal="true" style="position:fixed;z-index:70;display:none"><div class="finish" id="modalCard" tabindex="-1"></div></div>
 <div id="hint" role="status"></div>
 <div class="fx" id="fx" aria-hidden="true"></div>
 
@@ -1021,7 +1023,7 @@ function updToggles(){
  const h=$('sndH');if(h)h.textContent=soundOn?'🔔':'🔕'}
 /* ---- language ---- */
 const LANG_SOON={hi:1,mr:1};
-function langHTML(){return LANGS.map(([c,l])=>`<button class="lc ${c===L?'on':''} ${LANG_SOON[c]?'soon':''}" onclick="setLang('${c}')" aria-label="${l}">${l}${LANG_SOON[c]?'<span class="soonTag">Soon</span>':''}</button>`).join('')}
+function langHTML(){return LANGS.map(([c,l])=>`<button class="lc ${c===L?'on':''} ${LANG_SOON[c]?'soon':''}" onclick="setLang('${c}')" aria-label="${l}${LANG_SOON[c]?' — coming soon':''}">${l}${LANG_SOON[c]?'<span class="soonTag" aria-hidden="true">Soon</span>':''}</button>`).join('')}
 function setLang(c){if(LANG_SOON[c]){toast('🚧 '+(LANGS.find(x=>x[0]===c)[1])+' coming soon! Using English for now.');return}L=c;savePrefs();applyLang()}
 function applyLang(){
  document.documentElement.lang=L;
@@ -1040,9 +1042,33 @@ const withMeta=a=>DATA[a].qs.map((q,k)=>Object.assign({},q,{adv:a,k}));
 const poolFor=c=>CLASSES[c].adv.flatMap(withMeta);
 /* ---- modal ---- */
 let MODAL_REFRESH=null;
-function openModal(h,refresh){$('modalCard').innerHTML=h;$('modal').style.display='flex';MODAL_REFRESH=refresh||null}
-function closeModal(){$('modal').style.display='none';MODAL_REFRESH=null;refreshHome();if($('hub').style.display==='block')renderHub()}
-function closeModalQuiet(){$('modal').style.display='none';MODAL_REFRESH=null}
+let MODAL_LAST_FOCUS=null;
+function modalFocusables(){return [...$('modalCard').querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')].filter(e=>!e.disabled&&e.offsetParent!==null)}
+function modalKeydown(e){
+ if(e.key==='Escape'){e.preventDefault();closeModal();return}
+ if(e.key!=='Tab')return;
+ const f=modalFocusables();if(!f.length)return;
+ const first=f[0],last=f[f.length-1];
+ if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+ else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+}
+function openModal(h,refresh){
+ MODAL_LAST_FOCUS=document.activeElement;
+ $('modalCard').innerHTML=h;$('modal').style.display='flex';MODAL_REFRESH=refresh||null;
+ const heading=$('modalCard').querySelector('h1,h2,h3');
+ if(heading){heading.id='modalTitle';$('modal').setAttribute('aria-labelledby','modalTitle');$('modal').removeAttribute('aria-label')}
+ else{$('modal').removeAttribute('aria-labelledby');$('modal').setAttribute('aria-label',t('profTitle'))}
+ document.addEventListener('keydown',modalKeydown);
+ const f=modalFocusables();(f[0]||$('modalCard')).focus()
+}
+function modalClosedCommon(){
+ $('modal').style.display='none';MODAL_REFRESH=null;
+ document.removeEventListener('keydown',modalKeydown);
+ if(MODAL_LAST_FOCUS&&MODAL_LAST_FOCUS.focus){try{MODAL_LAST_FOCUS.focus()}catch(e){}}
+ MODAL_LAST_FOCUS=null
+}
+function closeModal(){modalClosedCommon();refreshHome();if($('hub').style.display==='block')renderHub()}
+function closeModalQuiet(){modalClosedCommon()}
 let tmpBuddy='🤖';
 function profileModal(first){
  tmpBuddy=SAVE.buddy;
@@ -1158,7 +1184,7 @@ function finish(){
  else if(RUN.kind==='daily'){title='📅 '+t('dailyQ')+'!';if(SAVE.daily!==today()){SAVE.daily=today();addXp(50);extra='<p>'+t('dailyBonus')+'</p>'}else extra='<p>'+t('comeBack')+'</p>'}else title='⚡ '+t('mixQ')+'!';
  persist();const sk=runStk.length?`<p>${t('newStk')} <span style="font-size:28px">${runStk.join(' ')}</span></p>`:'';
  const cl=CLASSES[CLS].adv,nn=RUN.kind==='adv'?cl[(cl.indexOf(RUN.adv)+1)%cl.length]:null;
- $('endCard').innerHTML=`<div class="stars">${'⭐'.repeat(st)}${'☆'.repeat(3-st)}</div><h2>${title}</h2><p>${bud()} ${t('endGreat',{n:nm(),x:xp})}</p><p>${t('level',{l:lvl(),t:lvlName()})}</p>${sk}${extra}<button class="big" id="bAgain">${t('again')}</button>${nn?`<button class="big" id="bNext" style="background:#7049df">${DATA[nn].card} ${advName(nn)} →</button>`:''}<button class="big" id="bShare" style="background:#f2a11f">${t('share')}</button><button class="exit" id="bHome">${t('mapBtn')}</button>`;
+ $('endCard').innerHTML=`<div class="stars">${'⭐'.repeat(st)}${'☆'.repeat(3-st)}</div><h2>${title}</h2><p>${bud()} ${t('endGreat',{n:nm(),x:xp})}</p><p>${t('level',{l:lvl(),t:lvlName()})}</p>${sk}${extra}<button class="big" id="bAgain">${t('again')}</button>${nn?`<button class="big" id="bNext" style="background:#7049df">${DATA[nn].card} ${advName(nn)} →</button>`:''}<button class="big" id="bShare" style="background:#f2a11f">${t('share')}</button><button class="bigOutline" id="bHome">${t('mapBtn')}</button>`;
  $('bAgain').onclick=()=>{RUN.kind==='adv'?openAdv(RUN.adv):RUN.kind==='daily'?startDaily():startMix()};if(nn)$('bNext').onclick=()=>openAdv(nn);$('bHome').onclick=leaveGame;
  $('bShare').onclick=()=>shareScore(t('shareTxt',{s:st,g:RUN.kind==='adv'?advName(RUN.adv):runName()}));
  $('overlayEnd').style.display='flex';confetti();beep(true)}
