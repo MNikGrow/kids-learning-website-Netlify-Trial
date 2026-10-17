@@ -463,6 +463,43 @@ h1.bn{margin:0;line-height:1.1}
 .seoFaq p{margin:0 0 12px}
 .seoFoot{text-align:center;font-size:14px!important;color:#60758c!important;margin-top:34px!important}.seoFoot a{color:#684bff}
 @media(max-width:560px){.seo p{font-size:16px}.seoGrid,.seoList{grid-template-columns:1fr}}
+
+/* ===== Touch devices only (phones/tablets) — desktop unaffected ===== */
+#kBack{display:none}
+html.touch body:not([data-screen="home"]) #kBack{display:flex}
+html.touch #kBack{position:fixed;z-index:60;left:calc(8px + env(safe-area-inset-left));top:calc(8px + env(safe-area-inset-top));align-items:center;justify-content:center;gap:4px;height:56px;min-width:56px;padding:0 16px 0 10px;border-radius:30px;border:4px solid #fff;background:linear-gradient(135deg,#ff8a3d,#ff5a5f);color:#fff;font:900 18px/1 inherit;box-shadow:0 6px 16px #173b6055,0 2px 0 #c2412d;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:transform .12s}
+html.touch #kBack svg{width:26px;height:26px}
+html.touch #kBack:active{transform:scale(.92)}
+/* old small back pills are replaced by the big button */
+html.touch .hubTop>.k-btn:first-child,html.touch .k-bar>.k-btn:first-child,html.touch #game .top>.tbtn:first-child{display:none}
+html.touch .hubTop,html.touch .k-bar,html.touch #game .top{padding-left:118px;min-height:56px}
+html.touch .hubTop{justify-content:flex-start}
+/* language picker lives on the home screen; hide it inside games to free space */
+html.touch .k-bar .langBox,html.touch #game .top .langBox{display:none}
+/* bigger, finger-friendly controls */
+html.touch .k-pill,html.touch .tbtn{min-height:46px;padding:10px 16px;font-size:16px;touch-action:manipulation}
+html.touch .hubTabs button{min-height:46px;min-width:52px}
+html.touch .exit{min-height:52px;font-size:18px}
+@media (max-width:600px){
+ html.touch #kBack{height:52px;min-width:52px;padding:0 12px 0 8px;font-size:16px}
+ html.touch .hubTop,html.touch .k-bar,html.touch #game .top{padding-left:104px}
+}
+@media (min-width:700px) and (max-width:1366px){
+ html.touch .k-pill,html.touch .tbtn{font-size:18px}
+ html.touch .gzTitle{font-size:20px}
+}
+/* phone: keep game top bar on one row */
+@media (max-width:600px){
+ html.touch .k-bar{flex-wrap:nowrap}
+ html.touch .k-bar .gzTitle{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px;text-align:left}
+ html.touch .k-bar .k-barR{flex-wrap:nowrap}
+}
+/* tablets (iPad etc.): scale menus up so cards and text fill the screen */
+@media (min-width:700px) and (max-width:1100px){
+ html.touch #hub .hubIn,html.touch #brain .hubIn{zoom:1.2}
+ html.touch #answers .ansText{font-size:22px}
+ html.touch #game .qText,html.touch #game .question{font-size:26px}
+}
 </style></head>
 <body data-screen="home">
 <section id="home">
@@ -2093,4 +2130,34 @@ const _refreshHome7=refreshHome;refreshHome=function(){_refreshHome7();const f=d
 const _renderHub7=renderHub;renderHub=function(){_renderHub7();const h=$('hubAct');if(h&&!h.querySelector('.calmHub'))h.insertAdjacentHTML('beforeend',`<button class="calmHub" onclick="calmOpen()">${pt('calmB')}</button>`)};
 setTimeout(()=>{if(document.body.dataset.screen==='home')refreshHome()},0);
 
+
+/* ===== Touch devices only (phones + tablets): in-app back button + phone/OS back stays inside the site ===== */
+const KB_TOUCH=(()=>{try{return matchMedia('(hover:none) and (pointer:coarse)').matches}catch(e){return false}})();
+const KBN={armed:false,gz:'qg'};
+function kbModalOpen(){const m=$('modal');return !!m&&m.style.display==='flex'}
+/* One step back inside the app. Returns true if handled, false if we are already at the start (home). */
+function kbBack(){
+ if($('restOv'))return false;
+ if(kbModalOpen()){if(typeof calmStop==='function')calmStop();closeModal();return true}
+ const s=document.body.dataset.screen;
+ if(s==='gz'){if(KBN.gz==='bg')bgBack();else gzBack();return true}
+ if(s==='game'){leaveGame();return true}
+ if(s==='hub'||s==='brain'){go('home');return true}
+ if(s==='home'&&typeof FC!=='undefined'&&FC.state==='play'){fcPause();return true}
+ return false}
+if(KB_TOUCH){
+ document.documentElement.classList.add('touch');
+ const need=()=>document.body.dataset.screen!=='home'||kbModalOpen()||(typeof FC!=='undefined'&&FC.state==='play');
+ const arm=()=>{if(KBN.armed)return;try{history.pushState({kb:1},'');KBN.armed=true}catch(e){}};
+ const _go=go;go=function(s){_go(s);if(need())arm()};
+ const _om=openModal;openModal=function(h,r){_om(h,r);arm()};
+ const _qg=startQG;startQG=function(id){KBN.gz='qg';_qg(id)};
+ const _bs=bgStart;bgStart=function(id){KBN.gz='bg';_bs(id)};
+ if(typeof fcBegin==='function'){const _fb=fcBegin;fcBegin=function(){_fb.apply(this,arguments);arm()}}
+ addEventListener('popstate',()=>{KBN.armed=false;if(kbBack()){if(need())arm()}else history.back()});
+ const b=document.createElement('button');b.id='kBack';b.type='button';b.setAttribute('aria-label','Back');
+ b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Back</span>';
+ b.onclick=()=>kbBack();
+ document.body.appendChild(b);
+}
 </script></body></html>
