@@ -90,6 +90,16 @@ button{font:inherit;cursor:pointer}
  .top{padding:8px 10px;gap:6px}.tbtn,.xp,.timer{padding:8px 10px;font-size:13px}.topTitle{order:-1;flex:1 0 100%}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* keep the first-run welcome/profile card's primary button on-screen on short phones, so kids
+   aren't left staring at a card that looks "finished" with its Let's go! button hidden below the fold */
+@media(max-height:700px){
+ .finish{padding:16px 22px}
+ .finish h2{font-size:24px;margin:4px 0}
+ .finish p{font-size:15px;margin:4px 0}
+ .buddies{gap:6px;margin:8px 0}
+ .buddies .bd{width:50px;min-height:50px;font-size:26px}
+ .big{padding:10px 18px}
+}
 /* ===== BodhiCubs v5 : games-first layout ===== */
 .needvoice{display:none!important}body.vp .needvoice{display:inline-block!important}body.vp .tools.needvoice{display:flex!important}
 #hint{position:fixed;left:50%;top:12%;z-index:90;max-width:92vw;background:#17345a;color:#fff;font-weight:800;font-size:15px;padding:12px 22px;border-radius:16px;box-shadow:0 10px 26px #0005;text-align:center;opacity:0;pointer-events:none;transform:translate(-50%,-10px);transition:opacity .25s,transform .25s}
@@ -478,6 +488,7 @@ html.touch .hubTop{justify-content:flex-start}
 html.touch .k-bar .langBox,html.touch #game .top .langBox{display:none}
 /* bigger, finger-friendly controls */
 html.touch .k-pill,html.touch .tbtn{min-height:46px;padding:10px 16px;font-size:16px;touch-action:manipulation}
+html.touch .hubAct button{min-height:46px;padding:12px 16px;touch-action:manipulation}
 html.touch .hubTabs button{min-height:46px;min-width:52px}
 html.touch .exit{min-height:52px;font-size:18px}
 @media (max-width:600px){
