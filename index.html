@@ -64,7 +64,7 @@ button{font:inherit;cursor:pointer}
 .aIcon{font-size:28px;flex:none}.ansText{flex:1}
 .speak{width:36px;height:36px;border:0;border-radius:10px;background:#fff;flex:none;box-shadow:0 3px 8px #173b6016}
 .hintRow{text-align:center;margin-top:10px}
-.hintBtn{border:0;border-radius:13px;padding:9px 16px;background:#fff2c9;color:#9a6800;font-weight:900}
+.hintBtn{border:0;border-radius:13px;padding:9px 16px;background:#fff2c9;color:#7a5100;font-weight:900}
 .clue{display:none;margin:8px auto 0;max-width:96%;padding:11px 14px;border-radius:16px;background:#fff8d6;font-weight:800;text-align:center;color:#36556d;animation:pop .3s}.clue.show{display:block}
 .feedback{min-height:28px;margin-top:10px;text-align:center;font-weight:900;color:#5c7286}
 .bottom{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -132,7 +132,7 @@ button{font:inherit;cursor:pointer}
 .best{font-weight:900;color:#9a6800;min-height:22px}
 #cGame{position:absolute;inset:0}
 .cHud{position:absolute;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-evenly;gap:6px;padding:0 8px;background:#ffffffd8;z-index:5}
-.hp{background:#fff;border:0;border-radius:99px;padding:6px 14px;font-weight:900;font-size:clamp(15px,2.2vh,20px);color:#294d69;box-shadow:0 3px 8px #173b6026}.hbtn{background:#fff2c9;color:#9a6800;cursor:pointer}
+.hp{background:#fff;border:0;border-radius:99px;padding:6px 14px;font-weight:900;font-size:clamp(15px,2.2vh,20px);color:#294d69;box-shadow:0 3px 8px #173b6026}.hbtn{background:#fff2c9;color:#7a5100;cursor:pointer}
 #cField,.field{touch-action:none;user-select:none;-webkit-user-select:none}
 #cField{position:absolute;left:0;right:0;top:56px;bottom:0;overflow:hidden;background:linear-gradient(#9fdcff 0%,#e3f6ff 58%,#bff0a2 58%,#7ed06a 100%)}
 #cField:before{content:"☁️";position:absolute;left:8%;top:6%;font-size:60px;opacity:.9;animation:drift 18s linear infinite}
@@ -140,7 +140,7 @@ button{font:inherit;cursor:pointer}
 @keyframes drift{50%{transform:translateX(30px)}}
 #cCount,#cBanner{position:absolute;left:0;right:0;text-align:center;pointer-events:none;z-index:4}
 #cCount{top:24%;font-size:clamp(70px,16vh,130px);font-weight:900;color:#fff;text-shadow:0 5px 0 #12a150,0 0 18px #0006}
-#cBanner{top:10%;display:none;font-size:clamp(20px,3.6vh,32px);font-weight:900;color:#9a6800}
+#cBanner{top:10%;display:none;font-size:clamp(20px,3.6vh,32px);font-weight:900;color:#7a5100}
 #cBanner{margin:0 auto;width:max-content;max-width:90%;background:#fff2c9;border-radius:99px;padding:8px 22px;box-shadow:0 6px 16px #0003}
 .pp{animation:ppx .6s}@keyframes ppx{0%{opacity:0;scale:.4}60%{scale:1.15}100%{opacity:1;scale:1}}
 #cPaused{position:absolute;inset:0;z-index:8;display:flex;align-items:center;justify-content:center;background:#173b60b0}
@@ -1062,7 +1062,7 @@ function updToggles(){
  const h=$('sndH');if(h)h.textContent=soundOn?'🔔':'🔕'}
 /* ---- language ---- */
 const LANG_SOON={hi:1,mr:1};
-function langHTML(){return LANGS.map(([c,l])=>`<button class="lc ${c===L?'on':''} ${LANG_SOON[c]?'soon':''}" onclick="setLang('${c}')" aria-label="${l}${LANG_SOON[c]?' — coming soon':''}">${l}${LANG_SOON[c]?'<span class="soonTag" aria-hidden="true">Soon</span>':''}</button>`).join('')}
+function langHTML(){return LANGS.map(([c,l])=>`<button class="lc ${c===L?'on':''} ${LANG_SOON[c]?'soon':''}" onclick="setLang('${c}')">${l}${LANG_SOON[c]?'<span class="soonTag" aria-hidden="true">Soon</span><span class="sr"> — coming soon</span>':''}</button>`).join('')}
 function setLang(c){if(LANG_SOON[c]){toast('🚧 '+(LANGS.find(x=>x[0]===c)[1])+' coming soon! Using English for now.');return}L=c;savePrefs();applyLang()}
 function applyLang(){
  document.documentElement.lang=L;
@@ -1143,7 +1143,7 @@ function openHub(c){CLS=c;go('hub');renderHub()}
 function leaveGame(){go('hub');renderHub()}
 let CLS=4;
 function classStars(c){const a=CLASSES[c].adv,n=a.filter(x=>SAVE.best[x]).length;return `⭐ ${n}/${a.length}`}
-function cbHTML(c){const C=CLASSES[c];return `<button class="k-cb" style="--c1:${C.c[0]};--c2:${C.c[1]};--d:${c*.35}s" onclick="openHub(${c})" aria-label="${t('cls')} ${c}"><span class="e">${C.emoji}</span><b>${t('cls')} ${c}</b><small>${t('yrs',{a:C.age})}</small><span class="st">${classStars(c)}</span></button>`}
+function cbHTML(c){const C=CLASSES[c];return `<button class="k-cb" style="--c1:${C.c[0]};--c2:${C.c[1]};--d:${c*.35}s" onclick="openHub(${c})"><span class="e" aria-hidden="true">${C.emoji}</span><b>${t('cls')} ${c}</b><small>${t('yrs',{a:C.age})}</small><span class="st">${classStars(c)}</span></button>`}
 function refreshHome(){
  $('sideL').innerHTML=[1,2,3].map(cbHTML).join('');$('sideR').innerHTML=[4,5,6].map(cbHTML).join('');
  $('pLv').textContent=t('lv')+' '+lvl()+' ⭐'+SAVE.xp;$('pStreak').textContent='🔥 '+SAVE.streak;$('meBtn').textContent=bud()+' '+(SAVE.name||t('me'));
@@ -1177,6 +1177,7 @@ function readAll(){readQ()}
 function setXpChip(){$('xp').textContent='⭐ '+xp+' XP • '+t('lv')+' '+lvl()}
 function render(){
  clearInterval(tm);stopSpeech();locked=false;secs=60;wrong=0;hinted=false;
+ const fxEl=$('fx');if(fxEl)fxEl.innerHTML='';
  const q=curQ(),A=DATA[q.adv],x=QX(q),r=document.documentElement.style;
  r.setProperty('--accent',A.accent);r.setProperty('--accent2',A.accent2);r.setProperty('--bg',A.bg);r.setProperty('--lessonA',A.pal[0]);r.setProperty('--lessonB',A.pal[1]);
  $('gameBg').style.backgroundImage='url("'+A.img+'")';
