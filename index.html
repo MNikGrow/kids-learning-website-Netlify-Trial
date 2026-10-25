@@ -472,7 +472,7 @@ html.touch #kBack svg{width:26px;height:26px}
 html.touch #kBack:active{transform:scale(.92)}
 /* old small back pills are replaced by the big button */
 html.touch .hubTop>.k-btn:first-child,html.touch .k-bar>.k-btn:first-child,html.touch #game .top>.tbtn:first-child{display:none}
-html.touch .hubTop,html.touch .k-bar,html.touch #game .top{padding-left:118px;min-height:56px}
+html.touch .hubTop,html.touch body:not([data-screen="home"]) .k-bar,html.touch #game .top{padding-left:118px;min-height:56px}
 html.touch .hubTop{justify-content:flex-start}
 /* language picker lives on the home screen; hide it inside games to free space */
 html.touch .k-bar .langBox,html.touch #game .top .langBox{display:none}
@@ -482,7 +482,7 @@ html.touch .hubTabs button{min-height:46px;min-width:52px}
 html.touch .exit{min-height:52px;font-size:18px}
 @media (max-width:600px){
  html.touch #kBack{height:52px;min-width:52px;padding:0 12px 0 8px;font-size:16px}
- html.touch .hubTop,html.touch .k-bar,html.touch #game .top{padding-left:104px}
+ html.touch .hubTop,html.touch body:not([data-screen="home"]) .k-bar,html.touch #game .top{padding-left:104px}
 }
 @media (min-width:700px) and (max-width:1366px){
  html.touch .k-pill,html.touch .tbtn{font-size:18px}
@@ -490,9 +490,9 @@ html.touch .exit{min-height:52px;font-size:18px}
 }
 /* phone: keep game top bar on one row */
 @media (max-width:600px){
- html.touch .k-bar{flex-wrap:nowrap}
+ html.touch body:not([data-screen="home"]) .k-bar{flex-wrap:nowrap}
  html.touch .k-bar .gzTitle{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px;text-align:left}
- html.touch .k-bar .k-barR{flex-wrap:nowrap}
+ html.touch body:not([data-screen="home"]) .k-bar .k-barR{flex-wrap:nowrap}
 }
 /* tablets (iPad etc.): scale menus up so cards and text fill the screen */
 @media (min-width:700px) and (max-width:1100px){
