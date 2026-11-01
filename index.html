@@ -502,7 +502,7 @@ html.touch .exit{min-height:52px;font-size:18px}
 }
 </style></head>
 <body data-screen="home">
-<a href="/printables/" style="position:fixed;bottom:16px;right:16px;z-index:9999;background:#d6323c;color:#fff;padding:12px 18px;border-radius:30px;font:700 15px sans-serif;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3)">🎄 Free Christmas Printables</a>
+<a href="/printables/" id="xmasPromo" style="position:fixed;bottom:16px;right:16px;z-index:55;background:#d6323c;color:#fff;padding:12px 18px;border-radius:30px;font:700 15px sans-serif;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:opacity .2s">🎄 Free Christmas Printables</a>
 <section id="home">
  <img id="bgimg" alt="" src="landing-1280.webp" srcset="landing-720.webp 720w, landing-1280.webp 1280w" sizes="100vw" fetchpriority="high">
  <div class="hShade"></div>
@@ -1142,6 +1142,9 @@ function go(s){
  if(s==='home')refreshHome()}
 function openHub(c){CLS=c;go('hub');renderHub()}
 function leaveGame(){go('hub');renderHub()}
+/* Keep the printables promo tucked away while a child is mid-game or a dialog/break screen is up, so it never covers game cards or buttons (QA fix). */
+function syncPromo(){const el=$('xmasPromo');if(!el)return;const show=document.body.dataset.screen==='home'&&$('modal').style.display!=='flex'&&!document.getElementById('restOv');el.style.display=show?'':'none'}
+setInterval(syncPromo,400);
 let CLS=4;
 function classStars(c){const a=CLASSES[c].adv,n=a.filter(x=>SAVE.best[x]).length;return `⭐ ${n}/${a.length}`}
 function cbHTML(c){const C=CLASSES[c];return `<button class="k-cb" style="--c1:${C.c[0]};--c2:${C.c[1]};--d:${c*.35}s" onclick="openHub(${c})" aria-label="${t('cls')} ${c}"><span class="e">${C.emoji}</span><b>${t('cls')} ${c}</b><small>${t('yrs',{a:C.age})}</small><span class="st">${classStars(c)}</span></button>`}
