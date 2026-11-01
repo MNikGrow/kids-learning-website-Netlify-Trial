@@ -90,6 +90,10 @@ button{font:inherit;cursor:pointer}
  .top{padding:8px 10px;gap:6px}.tbtn,.xp,.timer{padding:8px 10px;font-size:13px}.topTitle{order:-1;flex:1 0 100%}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* Printables promo must only ever show on the home screen: during active play it
+   was covering quiz answer buttons (esp. on mobile) and contradicted the
+   "no ads, no chat, no links" safe-play message shown in Brain Gym/Calm Minute. */
+body:not([data-screen="home"]) #printablesPromo{display:none}
 /* ===== BodhiCubs v5 : games-first layout ===== */
 .needvoice{display:none!important}body.vp .needvoice{display:inline-block!important}body.vp .tools.needvoice{display:flex!important}
 #hint{position:fixed;left:50%;top:12%;z-index:90;max-width:92vw;background:#17345a;color:#fff;font-weight:800;font-size:15px;padding:12px 22px;border-radius:16px;box-shadow:0 10px 26px #0005;text-align:center;opacity:0;pointer-events:none;transform:translate(-50%,-10px);transition:opacity .25s,transform .25s}
@@ -502,7 +506,7 @@ html.touch .exit{min-height:52px;font-size:18px}
 }
 </style></head>
 <body data-screen="home">
-<a href="/printables/" style="position:fixed;bottom:16px;right:16px;z-index:9999;background:#d6323c;color:#fff;padding:12px 18px;border-radius:30px;font:700 15px sans-serif;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3)">🎄 Free Christmas Printables</a>
+<a id="printablesPromo" href="/printables/" style="position:fixed;bottom:16px;right:16px;z-index:9999;background:#d6323c;color:#fff;padding:12px 18px;border-radius:30px;font:700 15px sans-serif;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3)">🎄 Free Christmas Printables</a>
 <section id="home">
  <img id="bgimg" alt="" src="landing-1280.webp" srcset="landing-720.webp 720w, landing-1280.webp 1280w" sizes="100vw" fetchpriority="high">
  <div class="hShade"></div>
