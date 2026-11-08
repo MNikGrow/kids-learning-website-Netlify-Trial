@@ -11,7 +11,8 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is BodhiCubs free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All science games, the Brain Gym and the Calm Minute are free, with no ads and no sign-up."}}, {"@type": "Question", "name": "Which classes and ages is it for?", "acceptedAnswer": {"@type": "Answer", "text": "BodhiCubs covers science for Class 1 to Class 6, for children aged about 6 to 12."}}, {"@type": "Question", "name": "Does it follow the CBSE / NCERT syllabus?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Topics follow NCERT / CBSE primary science (EVS) themes such as plants, animals, food, water, light, magnets and our body, together with global early-science standards."}}, {"@type": "Question", "name": "Is it safe for my child?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. There are no ads, no chat and no accounts. Your child’s name and progress stay only on your own device."}}, {"@type": "Question", "name": "Does it work on mobile phones and tablets?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. BodhiCubs runs in any modern browser on phones, tablets, laptops and computers. You can also add it to your home screen like an app."}}, {"@type": "Question", "name": "What is the Calm Minute?", "acceptedAnswer": {"@type": "Answer", "text": "A one-minute breathing break: kids breathe in and out with Bodhi the elephant as a circle grows and shrinks. It helps children settle and focus before learning."}}, {"@type": "Question", "name": "Why is it called BodhiCubs?", "acceptedAnswer": {"@type": "Answer", "text": "“Bodhi” means awakening. Gautama Buddha found wisdom under the Bodhi tree in Bodh Gaya, India. BodhiCubs helps young learners — the cubs — grow curious minds, calm hearts and kind habits."}}, {"@type": "Question", "name": "Which languages are available?", "acceptedAnswer": {"@type": "Answer", "text": "English is available now. Hindi and Marathi are coming soon."}}, {"@type": "Question", "name": "Can teachers use it with a class?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Teachers can create homework links for any class, collect result codes, print worksheets and view results. School plans are coming soon."}}]}</script>
 <meta property="og:title" content="BodhiCubs — Curious minds, calm hearts 🌳">
 <meta property="og:description" content="Free science games, brain training and mindful breathing for kids, inspired by the Bodhi tree. Ad-free and safe.">
-<meta property="og:type" content="website"><meta property="og:url" content="https://bodhicubs.com/"><meta property="og:image" content="https://bodhicubs.com/icon-512.png">
+<meta property="og:type" content="website"><meta property="og:url" content="https://bodhicubs.com/"><meta property="og:image" content="https://bodhicubs.com/landing-1280.webp"><meta property="og:image:width" content="1280"><meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="BodhiCubs — Curious minds, calm hearts 🌳"><meta name="twitter:description" content="Free science games, brain training and mindful breathing for kids, inspired by the Bodhi tree. Ad-free and safe."><meta name="twitter:image" content="https://bodhicubs.com/landing-1280.webp">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BodhiCubs","url":"https://bodhicubs.com/","applicationCategory":"EducationalApplication","operatingSystem":"Any","isAccessibleForFree":true,"inLanguage":"en","description":"Free, ad-free science games, Brain Gym and mindful Calm Minute breathing for kids aged 6–12, inspired by the Bodhi tree where Gautama Buddha found wisdom.","audience":{"@type":"EducationalAudience","educationalRole":"student","audienceType":"Children aged 6–12"},"educationalLevel":"CBSE / NCERT Class 1–6","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"keywords":"science games for kids, brain games, mindfulness for kids, Bodhi tree, kindness"}</script>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#684bff"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
@@ -100,7 +101,7 @@ button{font:inherit;cursor:pointer}
 .k-btn{cursor:pointer}.k-btn:hover{transform:translateY(-2px)}
 .langBox{display:inline-flex;gap:4px;background:#ffffffd8;border-radius:99px;padding:3px;box-shadow:0 4px 10px #173b6026}
 .lc{border:0;border-radius:99px;padding:6px 12px;background:transparent;color:#294d69;font-weight:900;font-size:14px;position:relative}.lc.on{background:#684bff;color:#fff}
-.lc.soon{color:#5c7286;cursor:pointer}.lc.soon .soonTag{position:absolute;top:-9px;right:-2px;background:#a04b00;color:#fff;font-size:8px;font-weight:900;border-radius:7px;padding:1px 4px;line-height:1.3;box-shadow:0 2px 4px #0003}
+.lc.soon{color:#5c7286;cursor:pointer}.lc.soon .soonTag{position:absolute;top:-10px;right:-4px;background:#a04b00;color:#fff;font-size:10px;font-weight:900;border-radius:7px;padding:1px 5px;line-height:1.4;box-shadow:0 2px 4px #0003}
 /* HOME */
 #home{position:fixed;inset:0;overflow:auto;display:none;flex-direction:column;background:#7ed6f5}
 #bgimg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(4px) saturate(1.2) brightness(1.02);transform:scale(1.04);z-index:0}
@@ -477,18 +478,21 @@ html.touch #kBack{position:fixed;z-index:60;left:calc(8px + env(safe-area-inset-
 html.touch #kBack svg{width:26px;height:26px}
 html.touch #kBack:active{transform:scale(.92)}
 /* old small back pills are replaced by the big button */
-html.touch .hubTop>.k-btn:first-child,html.touch .k-bar>.k-btn:first-child,html.touch #game .top>.tbtn:first-child{display:none}
-html.touch .hubTop,html.touch .k-bar,html.touch #game .top{padding-left:118px;min-height:56px}
+/* scoped to :not([data-screen="home"]) because the home header also uses the .k-bar/.hubTop
+   classes but has no #kBack button — these rules used to reserve space for a button that
+   isn't there, pushing the home logo and mascot prompt off-screen on phones/tablets */
+html.touch .hubTop>.k-btn:first-child,html.touch body:not([data-screen="home"]) .k-bar>.k-btn:first-child,html.touch #game .top>.tbtn:first-child{display:none}
+html.touch .hubTop,html.touch body:not([data-screen="home"]) .k-bar,html.touch #game .top{padding-left:118px;min-height:56px}
 html.touch .hubTop{justify-content:flex-start}
 /* language picker lives on the home screen; hide it inside games to free space */
-html.touch .k-bar .langBox,html.touch #game .top .langBox{display:none}
+html.touch body:not([data-screen="home"]) .k-bar .langBox,html.touch #game .top .langBox{display:none}
 /* bigger, finger-friendly controls */
 html.touch .k-pill,html.touch .tbtn{min-height:46px;padding:10px 16px;font-size:16px;touch-action:manipulation}
 html.touch .hubTabs button{min-height:46px;min-width:52px}
 html.touch .exit{min-height:52px;font-size:18px}
 @media (max-width:600px){
  html.touch #kBack{height:52px;min-width:52px;padding:0 12px 0 8px;font-size:16px}
- html.touch .hubTop,html.touch .k-bar,html.touch #game .top{padding-left:104px}
+ html.touch .hubTop,html.touch body:not([data-screen="home"]) .k-bar,html.touch #game .top{padding-left:104px}
 }
 @media (min-width:700px) and (max-width:1366px){
  html.touch .k-pill,html.touch .tbtn{font-size:18px}
@@ -496,9 +500,9 @@ html.touch .exit{min-height:52px;font-size:18px}
 }
 /* phone: keep game top bar on one row */
 @media (max-width:600px){
- html.touch .k-bar{flex-wrap:nowrap}
+ html.touch body:not([data-screen="home"]) .k-bar{flex-wrap:nowrap}
  html.touch .k-bar .gzTitle{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px;text-align:left}
- html.touch .k-bar .k-barR{flex-wrap:nowrap}
+ html.touch body:not([data-screen="home"]) .k-bar .k-barR{flex-wrap:nowrap}
 }
 /* tablets (iPad etc.): scale menus up so cards and text fill the screen */
 @media (min-width:700px) and (max-width:1100px){
