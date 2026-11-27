@@ -16,3 +16,8 @@ Sites suggested for backlink outreach (the owner sends the messages himself). Sk
 | 2026-11-06 | holiday-break-brain-games | NurtureStore | UK | https://nurturestore.co.uk/screen-free-week-kids-activities/ | Email shown on https://nurturestore.co.uk/about/ | to send |
 | 2026-11-06 | (skip) | Childhood101 | n/a | https://childhood101.com/contact/ | Says unsolicited requests are deleted: do not contact | skip |
 | 2026-11-06 | (skip) | Homeschool Giveaways | n/a | https://homeschoolgiveaways.com/contact-2/ | Says no link requests: do not contact | skip |
+| 2026-11-27 | valentines-kindness-activities | Red Ted Art | UK (not stated on page) | https://www.redtedart.com/valentines-printables-for-kids/ | Contact page: https://www.redtedart.com/contact/ | to send |
+| 2026-11-27 | valentines-kindness-activities | Crafts on Sea | UK (Cornwall, England) | https://www.craftsonsea.co.uk/tag/valentines-day/ | Work with me page: https://www.craftsonsea.co.uk/about-me/work-with-me/ (email on About page is hidden) | to send |
+| 2026-11-27 | valentines-kindness-activities | Coffee and Carpool | USA (not stated on page) | https://coffeeandcarpool.com/printable-valentines-day-activities/ | nicole@coffeeandcarpool.com (sidebar) | to send |
+| 2026-11-27 | valentines-kindness-activities | Natural Beach Living | USA (not stated on page) | https://www.naturalbeachliving.com/kindness-hearts/ | Contact page: https://www.naturalbeachliving.com/contact/ | to send |
+| 2026-11-27 | valentines-kindness-activities | KiddyCharts | UK (not stated on page) | https://www.kiddycharts.com/printables/free-printable-random-acts-of-kindness-kit-for-kids/ | Contact page: https://www.kiddycharts.com/contact-us/ | to send |
